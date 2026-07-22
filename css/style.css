@@ -620,6 +620,28 @@ h1 a img {
 .pin_scene {
   height: 100vh;
   background: #ddd;
+  overflow: hidden;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 70% 22%, rgba(242, 208, 70, .16), transparent 30%),
+    linear-gradient(180deg, #11141b 0%, #191c25 100%);
+}
+
+.pin_bg {
+  position: absolute;
+  inset: -2px;
+  background-image: url('../asset/case_gallery.png');
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0);
+  will-change: transform, filter;
+}
+
+.pin_layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* horizontal_section */
