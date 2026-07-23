@@ -485,6 +485,7 @@ h1 a img {
   transition: background 0.4s ease-out;
   mix-blend-mode: screen;
   /* 빛이 섞이듯 표현 */
+
 }
 
 .feature_card .word,
@@ -556,7 +557,7 @@ h1 a img {
   background-size: cover;
   background-position: center;
   border-radius: 24px;
-  box-shadow: 0 24px 70px rgba(255, 255, 255, .28);
+  box-shadow: 0 24px 70px rgba(108, 80, 27, .08);
 }
 
 .info_section .projects_all {
@@ -569,15 +570,17 @@ h1 a img {
 .info_section .projects_all .card {
   position: relative;
   overflow: hidden;
-  background-color: #fb7185;
+  background-color: #101827;
   background-image:
-    linear-gradient(118deg, rgba(255, 255, 255, .62), transparent 22%, rgba(255, 255, 255, .18) 42%, transparent 68%),
-    radial-gradient(circle at 16% 20%, color-mix(in oklch, #f46506 82%, white) 0 16%, transparent 36%),
-    conic-gradient(from 118deg at 62% 46%, #f46506, color-mix(in oklch, #f46506 40%, #fb7185), #fb7185, color-mix(in oklch, #fb7185 42%, white), #f46506);
-  background-blend-mode: screen, lighten, normal;
+    radial-gradient(circle at 18% 26%, color-mix(in oklch, #ff8a1e 88%, white) 0 14%, transparent 38%),
+    radial-gradient(circle at 82% 22%, color-mix(in oklch, #101827 74%, white) 0 16%, transparent 42%),
+    repeating-radial-gradient(circle at 52% 58%, transparent 0 25px, color-mix(in oklch, #ff8a1e 34%, transparent) 26px 27px, transparent 28px 50px),
+    conic-gradient(from 118deg at 50% 50%, #ff8a1e, #101827, color-mix(in oklch, #ff8a1e 42%, #101827), #ff8a1e);
+  background-blend-mode: screen, lighten, overlay, normal;
   min-height: 52vh;
   border-radius: 22px;
   padding: clamp(28px, 4vw, 54px);
+  display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -627,6 +630,13 @@ h1 a img {
     linear-gradient(180deg, #11141b 0%, #191c25 100%);
 }
 
+.pin_layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .pin_bg {
   position: absolute;
   inset: -2px;
@@ -635,36 +645,6 @@ h1 a img {
   background-position: center;
   transform: translateZ(0);
   will-change: transform, filter;
-}
-
-.pin_layer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* horizontal_section */
-.horizontal_section {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  z-index: 2;
-  background: #aaa;
-}
-
-/* stats_section */
-.stats_section {
-  position: relative;
-  padding-block: clamp(90px, 12vw, 150px);
-  background: #ccc;
-}
-
-/* cta_section */
-.cta_section {
-  text-align: center;
-  background: #bbb;
-  height: 100px;
 }
 
 .pin_overlay {
@@ -838,4 +818,28 @@ h1 a img {
 
 .photo.glitch::after {
   animation: glitch_slices .35s steps(6) reverse both;
+}
+
+
+/* horizontal_section */
+.horizontal_section {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  background: #aaa;
+}
+
+/* stats_section */
+.stats_section {
+  position: relative;
+  padding-block: clamp(90px, 12vw, 150px);
+  background: #ccc;
+}
+
+/* cta_section */
+.cta_section {
+  text-align: center;
+  background: #bbb;
+  height: 100px;
 }

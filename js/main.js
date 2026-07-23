@@ -352,6 +352,7 @@ document.querySelectorAll('.tit_card').forEach((card) => {
   })
 });
 
+
 const stickyBox = document.querySelector('.sticky_box');
 const processCards = gsap.utils.toArray('.projects_all .card');
 
@@ -363,13 +364,13 @@ processCards.forEach((card, index) => {
   ScrollTrigger.create({
     trigger: card,
     start: 'top center',
-    end: 'bottom bottom',
+    end: 'bottom center',
     onEnter: () => changeBg(imgUrl),
     onEnterBack: () => changeBg(imgUrl),
   });
 })
 
-//sticky 박스의 이미지를 바로 바꾸면 딱딱해서 살짝 줄였다가 다시 키우며 교체
+//sticky 박스의 이미지를 바로 바꾸면 딱닥해서 살짝 줄였다가 다시 키우며 교체
 function changeBg(imgUrl) {
   if (!stickyBox) return;
 
@@ -384,7 +385,7 @@ function changeBg(imgUrl) {
   })
 }
 //처음 화면에 들어오기 전 기본 sticky 이미지를 1번으로 세팅
-changeBg(`asset/info1.pin`);
+changeBg(`asset/info1.png`);
 
 const pinBg = document.getElementById('pin_bg');
 const photos = gsap.utils.toArray('.photo');
@@ -398,7 +399,7 @@ const pinTl = gsap.timeline({
     end: '+=1800',
     //섹션을 화면에 고정해서 사진이 올라오는 무대를 만든다
     pin: true,
-    //스크롤 위치와 애니메이션 진행도를 연결
+    // 스크롤 위치와 애니메이션 진행도를 연결
     scrub: true,
     // pin이 시작될 때 생길 수 있는 튐을 줄인다.
     anticipatePin: 1,
@@ -412,14 +413,14 @@ const pinTl = gsap.timeline({
 //배경 이미지를 살짝 흐리고 키워서 뒤로 밀리는 느낌을 만든다
 pinTl.to(pinBg, { filter: 'blur(12px', scale: 1.06, duration: 1, ease: 'none' }, 0);
 
-//사진마다 살짝 다른 각도와 glitch 효과를 줘서 디자인 갤러리 처럼 겹쳐 보이게 한다
+//사진마다 살짝 다른 각도와 giltch 효과를 줘서 디자인 갤러리 처럼 겹쳐 보이게 한다
 photos.forEach((photo, index) => {
-  //사진이 등장하기 직전에 레이어 순서와 glitch클래스를 조정
+  //사진이 등장하기 직전에 레이어 순서와 giltch클래스를 조정
   pinTl.add(() => {
     //뒤에 나온 사진이 앞쪽에 쌓이도록 z-index 올림
     photo.style.zIndex = String(100 + index);
     photo.classList.add('glitch');
-    //0.4초뒤 glitch 클래스를 제거해 효과를 끝낸다
+    //0.4초 뒤 glitch 클래스를 제거해 효과를 끝낸다
     gsap.delayedCall(0.4, () => photo.classList.remove('glitch'));
   }, index * 0.22);
 
@@ -439,8 +440,8 @@ photos.forEach((photo, index) => {
     duration: 0.85,
     //빠르게 올라온 뒤 부드럽게 멈추게 한다
     ease: 'power3.out',
-  }, index * 0.22);
-})
+  }, index * 0.22)
+});
 
 // 사진 묶음 전체를 마지막에 조금 위로 올려 장면이 마무리되는 느낌을 준다.
 pinTl.to('.float_wrap', { yPercent: -6, duration: 0.8, ease: 'none' }, '>0.1');
